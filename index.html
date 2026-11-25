@@ -7,15 +7,14 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background-color: transparent; /* Прозрачный фон под тему Notion */
-      color: #37352f; /* Темно-серый текст (для светлой темы) */
+      background-color: transparent;
+      color: #37352f;
       display: flex;
       align-items: center;
       justify-content: center;
       min-height: 100vh;
       padding: 16px;
     }
-    /* Автоматическая адаптация под темную тему Notion */
     @media (prefers-color-scheme: dark) {
       body { color: #e3e2e0; }
     }
@@ -28,6 +27,7 @@
     .quote {
       font-size: 16px;
       line-height: 1.5;
+      font-weight: 700; /* <--- ВОТ ЭТА СТРОЧКА СДЕЛАЛА ТЕКСТ ЖИРНЫМ */
       font-style: italic;
       margin-bottom: 8px;
     }
@@ -46,18 +46,19 @@
   </div>
 
   <script>
-    // ВПИШИТЕ СЮДА СВОИ ЦИТАТЫ
+    // ==========================================
+    // ВАШ СПИСОК ЦИТАТ (РЕДАКТИРОВАТЬ ТОЛЬКО ТУТ)
+    // ==========================================
     const quotes = [
       { text: "Дисциплина — это решение делать то, чего очень не хочется делать, чтобы достичь того, чего очень хочется достичь.", author: "Джон Максвелл" },
-      { text: "Маленькие шаги каждый день приводят к большим результатам.", author: "Неизвестный автор" },
-      { text: "Не ждите идеального момента. Возьмите момент и сделайте его идеальным.", author: "Зои Сей" }
+      { text: "Тревога — самое худшее применение, которое можно найти своему воображению.", author: "Дэн Задре" },
+      { text: "Не ждите идеального момента. Возьмите момент и сделайте его идеальным.", author: "Зои Сей" },
+      { text: "Посмотри на свои привычки, из которых складывается твоя повседневная жизнь: являются ли они результатом бесчисленных мелких проявлений трусости и лени или же твоего мужества и изобретательного разума?", author: "Фридрих Ницше" }
     ];
+    // ==========================================
 
-    // Вычисляем номер текущего дня с начала эпохи
     const msInDay = 1000 * 60 * 60 * 24;
     const todayIndex = Math.floor(Date.now() / msInDay);
-
-    // Выбираем цитату по остатку от деления (идут по кругу)
     const dailyQuote = quotes[todayIndex % quotes.length];
 
     document.getElementById("quote-text").innerText = `«${dailyQuote.text}»`;
